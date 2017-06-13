@@ -21,7 +21,4 @@ double rand_double();
 
 // returns a random double from the normal distribution N(0,1)
 double norm_double();
-
-
-int shuffle_d_arr(double *buffer, int n);
 #endif

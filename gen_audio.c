@@ -44,11 +44,6 @@ int main(int argc, char *argv[]){
   if(argc > 2)
     note2_hz = strtod(argv[2], NULL);
   
-  //if(argc > 2)
-  //  strncpy(infile_path, argv[2], PATH_SIZE);
-  //if(argc > 3)
-  //  strncpy(outfile1_path, argv[3], PATH_SIZE);
-
   // The pre-open SF_INFO should have format = 0, everything else will be set in the open call
   sfinfo.format = 0;
   

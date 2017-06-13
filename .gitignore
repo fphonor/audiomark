@@ -1,0 +1,9 @@
+embed
+detect
+c/
+
+# ctags cache file
+tags
+
+# object files
+*.o

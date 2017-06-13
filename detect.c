@@ -242,8 +242,7 @@ int test(char *orig_path, char *test_path)
   memset(extract_buffer, 0, sizeof(double)*extract_buffer_len);
 
   // set up random number generator
-  seed_rand(wmark->key_seed);
-  set_rand(wmark->len); 
+  set_rand(wmark->key_seed, wmark->len); 
 
   // set up transform plans
 	ft_orig = (fftw_plan *)malloc(sizeof(fftw_plan) * channels);

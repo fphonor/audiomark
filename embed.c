@@ -161,8 +161,7 @@ int embed(char *infile_path, char *outfile_path, char *orig_outfile_path)
   else
     embed_to_signal = &ss_embed_to_signal;
 
-  seed_rand(wmark->key_seed);
-  set_rand(wmark->len); 
+  set_rand(wmark->key_seed, wmark->len); 
 
   //
   // Open input file and output file

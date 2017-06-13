@@ -213,8 +213,7 @@ int test(char *orig_path, char *test_path)
   memset(extract_buffer, 0, sizeof(double)*extract_buffer_len);
 
   // set up random number generator
-  seed_rand(wmark->key_seed);
-  set_rand(wmark->len); 
+  set_rand(wmark->key_seed, wmark->len); 
 
   sfinfo_orig.format = 0;
   if(!(s_orig = sf_open(orig_path, SFM_READ, &sfinfo_orig))){

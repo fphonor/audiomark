@@ -26,7 +26,7 @@ typedef struct watermark{
   unsigned key_seed;
   int processing_gain;
   int type;
-	int bpf;
+  int bpf;
 } watermark;
 
 void gen_default_wmark();

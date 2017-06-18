@@ -10,7 +10,7 @@ unsigned seed_rand(unsigned seed);
 void free_rand();
 
 // sets an array of numbers to be randomized
-void set_rand(int size);
+void set_rand(unsigned int seed, int size);
 
 // returns a random integer between 0 and random_size, that hasn't been chosen
 // in the past n_chosen calls.

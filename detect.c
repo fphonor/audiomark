@@ -20,7 +20,7 @@
 int	test_debug = 14;
 extern	watermark *wmark;
 int	test_iteration = 0;
-int detect_verbose = 0;
+int detect_verbose = 1;
 
 double	extract_wmark_elt(complex orig, complex test);
 int ss_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, int f_buffer_len, double *ex_dot_orig, double *ex_dot_ex);
@@ -38,6 +38,12 @@ int main(int argc, char *argv[])
   // set default parameters for testing
   strcpy(orig_path, "audio/orig_out.wav");
   strcpy(test_path, "audio/out.wav");
+  strcpy(orig_path, "audio/886.wav");
+  // strcpy(test_path, "audio/886out.wav");
+  strcpy(test_path, "886_old.wav");
+  //strcpy(test_path, "audio/886out_old.wav");
+  // strcpy(orig_path, "audio/105.wav");
+  // strcpy(test_path, "audio/105out.wav");
   strcpy(config_path, "wmark.cfg");
 
   //
@@ -89,10 +95,7 @@ double extract_wmark_elt(complex orig, complex test)
 } //}}}
 
 //extracts the watermark from the test_freq_buffer, given the orig_freq_buffer, and the length of the watermark
-void fh_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, double *extract_buffer)
-{ //{{{
-    //if(test_iteration >= 4 && test_iteration <= 5 || test_iteration == 0)
-    //  printf("test %d orig: ", test_iteration); print_pow_density(orig_freq_buffer,10);
+void fh_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, double *extract_buffer) {
   int next_r;
   double extracted_elt;
   for(int i = 0; i < wmark->len; i++){
@@ -113,7 +116,7 @@ void fh_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, 
 	  next_r, extracted_elt);
     }
   }
-} //}}}
+}
 
 //
 // Watermark extraction sequence described in Cox et al. 1997
@@ -122,8 +125,7 @@ void fh_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, 
 // o
 //
 int ss_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer, 
-											 int f_buffer_len, double *ex_dot_orig, double *ex_dot_ex)
-{ //{{{
+											 int f_buffer_len, double *ex_dot_orig, double *ex_dot_ex) {
 	// embed indices are the indices of V in Cox et al.: these are the indices in
 	// which the waterark is actually embedded.
 	int *embed_indices;
@@ -150,8 +152,8 @@ int ss_extract_watermark(complex *orig_freq_buffer, complex *test_freq_buffer,
 		orig_elt = noise_seq[i];
 
 		if(test_iteration == test_debug) printf("(%5.3lf, %5.3lf) ",ex_elt,orig_elt);
-		if(fabs(orig_elt-ex_elt) > .5) printf("oddities at iteration %d\n",test_iteration);
-		//if(fabs(orig_elt-ex_elt) > 10) continue;
+		// if(fabs(orig_elt-ex_elt) > .5) printf("oddities at iteration %d\n",test_iteration);
+		// if(fabs(orig_elt-ex_elt) > 10) continue;
 
 		*ex_dot_ex += ex_elt * ex_elt;
 		*ex_dot_orig += ex_elt * orig_elt;

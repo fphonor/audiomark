@@ -22,6 +22,6 @@ void complex_array_add(complex *a, complex *addition, int len);
 void d_array_to_complex(complex *a, double *addition, int len);
 double pow_elem(complex elem);
 void print_pow_density(complex *array, int n);
-int *get_n_biggest(complex *buffer, int len, int n);
+int *get_n_biggest(complex *buffer, int len, int *n);
 
 #endif

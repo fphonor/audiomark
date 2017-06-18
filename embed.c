@@ -38,8 +38,13 @@ int main(int argc, char *argv[]){
   FILE		*config;
 
   // set default parameters for testing
+  // strcpy(infile_path, "audio/input2.wav");
   strcpy(infile_path, "audio/input.wav");
-  strcpy(outfile_path, "audio/out.wav");
+  strcpy(outfile_path, "audio/out0.wav");
+  // strcpy(infile_path, "audio/886.wav");
+  // strcpy(outfile_path, "audio/886out_old.wav");
+  strcpy(infile_path, "audio/105.wav");
+  strcpy(outfile_path, "audio/105out_old.wav");
   strcpy(orig_out_path, "audio/orig_out.wav");
   strcpy(config_path, "wmark.cfg");
 
@@ -113,8 +118,7 @@ void fh_embed_to_signal(complex *freq_buffer, int f_buffer_len)
 } //}}}
 
 // Watermark embedding process described in Cox et al.
-void ss_embed_to_signal(complex *freq_buffer, int f_buffer_len)
-{ //{{{
+void ss_embed_to_signal(complex *freq_buffer, int f_buffer_len) {
 	// extract V, represented here by a set of indices from the
 	// frequency domain.
 	int *embed_indices;

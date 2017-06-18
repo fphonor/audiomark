@@ -204,7 +204,7 @@ void print_watermark_info()
 { //{{{
   printf("watermark info:\n");
   printf("\twatermark: >%s<\n",wmark->message);
-  printf("\tlen (real %d), %d\n", strlen(wmark->message), wmark->len);
+  printf("\tlen (real %ld), %d\n", strlen(wmark->message), wmark->len);
   printf("\talpha: %lf\n",wmark->alpha);
   printf("\tschema: %d\n",wmark->schema);
   printf("\tkey_seed: %u\n",wmark->key_seed);
@@ -278,9 +278,8 @@ void embed_to_noise(double *noise_seq, int noise_len)
 // were finished.
 //
 // NOTE: MALLOC's INDICES
-int extract_sequence_indices(complex *freq_buff, int len, int **indices)
-{ //{{{
+int extract_sequence_indices(complex *freq_buff, int len, int **indices) {
 	int n = wmark->bpf;
-	*indices = get_n_biggest(freq_buff, len, n);
+	*indices = get_n_biggest(freq_buff, len, &n);
 	return n;
-} // }}}
+}
